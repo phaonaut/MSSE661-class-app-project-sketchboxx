@@ -1,0 +1,32 @@
+{
+  "name": "sketchboxx-api",
+  "version": "1.0.0",
+  "description": "Api to support Sketckboxx app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phaonaut/MSSE661-class-app-project-sketchboxx.git"
+  },
+  "author": "Rodney Gordon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phaonaut/MSSE661-class-app-project-sketchboxx/issues"
+  },
+  "homepage": "https://github.com/phaonaut/MSSE661-class-app-project-sketchboxx#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
