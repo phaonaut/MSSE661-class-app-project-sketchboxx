@@ -20,7 +20,7 @@ This is going to be built using a variety of technologies. The heavy lifting is 
     - Manage Account Settings (change password, etc.)
     - Saving files
     - Additional options for exporting and sharing files
-    - Save Color Plettes
+    - Save Color Palettes 
 - Drawing Features
     - Layer and opacity controls
     - Art tools

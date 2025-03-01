@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skectch Boxx</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="./src/css/styles.css">
+    </head>
+    <body>
+      <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <!-- Logo -->
+            <a class="navbar-item has-text-weight-bold" href="https://sketchboxx.rodneygordon.net" data-page="home">
+              SKETCHBOXX
+            </a>
+          </div>
+          
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item is-disabled">Tools</a>
+              <a class="navbar-item is-disabled">View</a>
+            </div>
+            <div class="navbar-end">
+              <span id="login/logout">
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <section class="section" id="main-content">
+            <div id="sketch-container"></div>          
+        </section>
+        
+        <!-- Sidebar Left -->
+        <div class="sidebar">
+          <div class="sidebar-menu">
+            <!-- Toggle group (first 4 buttons) -->
+            <div class="sidebar-item toggle-item is-active" data-toggle-group="tools" data-tool="pen">
+              <i class="fas fa-pen"></i>
+              <span class="tooltip">Pen Tool</span>
+            </div>
+            <div class="sidebar-item toggle-item" data-toggle-group="tools" data-tool="spray-can">
+              <i class="fas fa-spray-can"></i>
+              <span class="tooltip">Air Brush</span>
+            </div>
+            <div class="sidebar-item toggle-item" data-toggle-group="tools" data-tool="fill">
+              <i class="fas fa-fill-drip"></i>
+              <span class="tooltip">Fill Tool</span>
+            </div>
+            <div class="sidebar-item toggle-item" data-toggle-group="tools" data-tool="eraser">
+              <i class="fas fa-eraser"></i>
+              <span class="tooltip">Eraser</span>
+            </div>
+            <div class="sidebar-item toggle-item is-disabled" data-toggle-group="tools" data-tool="palette" disabled>
+              <i class="fas fa-palette"></i>
+              <span class="tooltip">Color Palette</span>
+            </div>
+            <div class="sidebar-item toggle-item is-disabled" data-toggle-group="tools" data-tool="undo" disabled>
+              <i class="fas fa-undo"></i>
+              <span class="tooltip">Undo</span>
+            </div>
+            <!-- Color Picker -->
+            <input type="color" id="colorPicker" value="#000000">
+            
+            <!-- Divider between toggle group and other buttons -->
+            <div class="divider"></div>
+            
+            <!-- Other buttons -->
+            <div class="sidebar-item" id="clear-canvas">
+              <i class="fas fa-times"></i>
+              <span class="tooltip">Clear Canvas</span>
+            </div>
+            <div class="sidebar-item" id="download">
+              <i class="fas fa-download"></i>
+              <span class="tooltip">Download</span>
+            </div>
+            <div class="sidebar-item js-modal-trigger" id="save" data-target="modal-js-save">
+              <i class="fas fa-save"></i>
+              <span class="tooltip">Save</span>
+            </div>
+            <div class="sidebar-item js-modal-trigger" id="load" data-target="modal-js-load">
+              <i class="fas fa-upload"></i>
+              <span class="tooltip">Load Saved Image</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sliders Right Side-->
+        <div class="slider-container">
+          <div class="field">
+            <label class="slider-label">Size</label>
+            <input class="slider is-fullwidth" step="1" min="0" max="100" value="2" type="range" data-tool="size">
+          </div>
+          
+          <div class="field">
+            <label class="slider-label">Blur</label>
+            <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range" data-tool="blur" disabled>
+          </div>
+          
+          <div class="field">
+            <label class="slider-label">Stroke</label>
+            <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range" data-tool="stroke" disabled>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="custom-footer">
+          <div class="content has-text-centered">
+            <p>
+              by <a href="https://www.rodneygordon.net">Rodney Gordon</a>.
+            </p>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Sign In Modal -->
+      <div id="modal-js-signin" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <h1 class="title">Sign In</h1>
+            <div class="field">
+              <label class="label">Username</label>
+              <p class="control has-icons-left has-icons-right">
+                <input id="signin-username" class="input" type="username" placeholder="Username" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <p class="control has-icons-left">
+                <input id="signin-password" class="input" type="password" placeholder="Password" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="control">
+              <button class="button is-primary" onclick="doLogin(event)">Sign In</button>
+            </div>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+      <!-- Sign Up Modal -->
+      <div id="modal-js-signup" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <h1 class="title">Register Account</h1>
+            <div class="field">
+              <label class="label">Username</label>
+              <p class="control has-icons-left has-icons-right">
+                <input id="signup-username" class="input" type="username" placeholder="Username" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Email</label>
+              <p class="control has-icons-left has-icons-right">
+                <input id="signup-email" class="input" type="email" placeholder="Email" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <p class="control has-icons-left">
+                <input id="signup-password" class="input" type="password" placeholder="Password" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Re-Enter Password</label>
+              <p class="control has-icons-left">
+                <input id="signup-password-reenter" class="input" type="password" placeholder="Password" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="control">
+              <button class="button is-primary" onclick="doRegister(event)">Sign Up</button>
+            </div>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+      
+      <!-- Save Modal -->
+      <div id="modal-js-save" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <h1 class="title">Save Sketch</h1>
+            <span id="save-box"></span>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+      <!-- Load Modal -->
+      <div id="modal-js-load" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <h1 class="title">Load Sketch</h1>
+            <span id="load-box"></span>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+      <!-- Toast Container -->
+      <div id="toast-container" class="toast-container"></div>
+    </body>
+    <script src="./src/js/simple-storage.js"></script>
+    <script src="./src/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="./src/js/toasty.js"></script>
+    <script src="./src/js/p5Sketch.js"></script>
+    <script src="./src/js/service-helpers.js"></script>
+    <script src="./src/js/auth-service.js"></script>
+    <script src="./src/js/auth.js"></script>
+    <script src="./src/js/sketches-service.js"></script>
+    <script src="./src/js/sketches.js"></script>
+</html>

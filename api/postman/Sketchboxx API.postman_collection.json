@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d87a9e70-2155-4c78-bd95-016d2229cf00",
-		"name": "Sketchboxx API",
+		"name": "SketchBoxx API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41727618"
 	},
@@ -42,7 +42,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:3000/api/auth/login",
+					"name": "/api/auth/login",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -76,69 +76,226 @@
 			]
 		},
 		{
-			"name": "localhost:3000/account",
-			"request": {
-				"auth": {
-					"type": "noauth"
+			"name": "Account",
+			"item": [
+				{
+					"name": "/account",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQwNDUyMzM5LCJleHAiOjE3NDA1NDIzMzl9.vyc8UGxs6UEPww16l7LIYO1pzxrflkm7zlgrVvlvRMI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"username\": \"myusername\",\r\n    \"email\": \"myemail@regis.edu\",\r\n    \"status\": \"Active\",\r\n    \"password\": \"mypass\",\r\n    \"create_time\": \"2025-02-25T02:51:34.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MDYxNDk3fQ.Cxx06hc-Bz94Q0F837YsqNt_rvDd03ZEgfZWv1eH3VY",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/api/account",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"account"
-					]
+				{
+					"name": "/api/account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQwNDUyMzM5LCJleHAiOjE3NDA1NDIzMzl9.vyc8UGxs6UEPww16l7LIYO1pzxrflkm7zlgrVvlvRMI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "localhost:3000/account",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MDYxNDk3fQ.Cxx06hc-Bz94Q0F837YsqNt_rvDd03ZEgfZWv1eH3VY",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"username\": \"RodneyG\",\r\n    \"email\": \"rgordon006@regis.edu\",\r\n    \"status\": \"Active\",\r\n    \"create_time\": \"2025-02-09T00:23:47.000Z\",\r\n    \"password\": \"chrismc\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Sketches",
+			"item": [
+				{
+					"name": "/api/sketches",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQwNzA2NzU4LCJleHAiOjE3NDA3OTY3NTh9.5nxoT67HGUX43UQbY-iJvAbmTSaVLl7De4tXqod4tic",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/sketches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"sketches"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/api/account",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"account"
-					]
+				{
+					"name": "/api/sketches",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQwNDUzNDYzLCJleHAiOjE3NDA1NDM0NjN9.ZcfQCZhyR2nPBylv3Vmw-yxeMB_qRuVKlrEm8ELh16M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sketch name2\",\r\n    \"sketch\": {\r\n        \"metadata\": {\r\n            \"title\": \"Bouncing Balls\",\r\n            \"description\": \"A simple animation of colorful bouncing balls\",\r\n            \"tags\": [\r\n                \"animation\",\r\n                \"physics\",\r\n                \"interactive\"\r\n            ],\r\n            \"created\": \"2025-02-24T14:30:00Z\",\r\n            \"lastModified\": \"2025-02-24T15:45:00Z\",\r\n            \"version\": \"1.2.0\"\r\n        },\r\n        \"settings\": {\r\n            \"width\": 800,\r\n            \"height\": 600,\r\n            \"frameRate\": 60,\r\n            \"background\": \"#f0f0f0\",\r\n            \"colorMode\": \"RGB\"\r\n        },\r\n        \"entities\": [\r\n            {\r\n                \"type\": \"ball\",\r\n                \"x\": 100,\r\n                \"y\": 150,\r\n                \"diameter\": 40,\r\n                \"color\": \"#FF5722\",\r\n                \"velocity\": {\r\n                    \"x\": 3.5,\r\n                    \"y\": -2.8\r\n                }\r\n            },\r\n            {\r\n                \"type\": \"ball\",\r\n                \"x\": 300,\r\n                \"y\": 200,\r\n                \"diameter\": 60,\r\n                \"color\": \"#2196F3\",\r\n                \"velocity\": {\r\n                    \"x\": -2.2,\r\n                    \"y\": 3.1\r\n                }\r\n            }\r\n        ],\r\n        \"code\": {\r\n            \"setup\": \"function setup() {\\n  createCanvas(settings.width, settings.height);\\n  frameRate(settings.frameRate);\\n}\",\r\n            \"draw\": \"function draw() {\\n  background(settings.background);\\n  // Animation logic here\\n}\",\r\n            \"customFunctions\": [\r\n                {\r\n                    \"name\": \"updateBalls\",\r\n                    \"code\": \"function updateBalls() {\\n  // Update ball positions\\n}\"\r\n                }\r\n            ]\r\n        },\r\n        \"libraries\": [\r\n            {\r\n                \"name\": \"p5.sound\",\r\n                \"version\": \"0.3.12\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/sketches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"sketches"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Colors",
+			"item": [
+				{
+					"name": "localhost:3000/colors",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MDYxNDk3fQ.Cxx06hc-Bz94Q0F837YsqNt_rvDd03ZEgfZWv1eH3VY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/colors",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"colors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/colors",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MDYxNDk3fQ.Cxx06hc-Bz94Q0F837YsqNt_rvDd03ZEgfZWv1eH3VY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hex\": \"#eb4034\",\r\n    \"rgb\": \"235, 64, 52\",\r\n    \"hsl\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/sketches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"sketches"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

@@ -1,13 +1,15 @@
-require('dotenv').config();
+import 'dotenv/config';
 
-const express = require('express');
-const cors = require('cors');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
+import express from 'express';
+import cors from 'cors';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
 
-const authRoutes = require('./routes/authroutes');
-const userRoutes = require('./routes/userroutes');
-const errors = require('./middleware/errors');
+import authRoutes from './routes/authroutes.js';
+import accountRoutes from './routes/accountroutes.js';
+import sketchesRoutes from './routes/sketchesroutes.js';
+// import colorsRoutes from './routes/colorsroutes.js';
+import * as errors from './middleware/errors.js';
 
 
 const app = express();
@@ -36,9 +38,10 @@ app.use('/test', (req, res) => {
 
 // Handles routes for sketchboxx
 app.use('/api/auth', authRoutes);
-app.use('/api/account', userRoutes);
+app.use('/api/account', accountRoutes);
+app.use('/api/sketches', sketchesRoutes);
+// app.use('/api/colors', colorsRoutes);
 // app.use('/api/docs', express.static('docs'));
-// app.use('/api/sketch', routes); //TODO add sketch routes
 
 // Handle 404 errors
 app.use(errors.NotFound);
